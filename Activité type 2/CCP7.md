@@ -93,4 +93,8 @@ Les machines clientes ont un accès restreint, tandis que les serveurs accessibl
   - 4663 : tentative d’accès à des objets
   - 1102 : suppression des journaux
 
+## Supervision
 
+## Radius
+
+## IDS & IPS

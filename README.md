@@ -32,7 +32,7 @@ Vous trouverez la page correspondante [ici]().
 
 ### CCP8 : Mettre en place, assurer et tester les sauvegardes et les restaurations des éléments de l’infrastructure
 *Mettre en œuvre des stratégies de sauvegarde et de restauration, tester leur efficacité pour garantir la reprise après incident.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/c53e3993b8972dc73073bbefeb091784d94f4641/Activit%C3%A9%20type%202/CCP8.md).
 
 ### CCP9 : Exploiter et maintenir les services de déploiement des postes de travail
 *Configurer et gérer le déploiement automatisé des postes de travail via des outils comme WDS.*  

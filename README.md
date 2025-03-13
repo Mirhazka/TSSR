@@ -28,7 +28,7 @@ Vous trouverez la page correspondante [ici]().
 
 ### CCP7 : Maintenir et sécuriser les accès à internet et les interconnexions des réseaux
 *Configurer et sécuriser les pare-feu, VPN et proxies, assurer la continuité et la protection des accès réseau.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/1ff54d48ee8f919b7daa46f397555b64cc8f5acf/Activit%C3%A9%20type%202/CCP7.md).
 
 ### CCP8 : Mettre en place, assurer et tester les sauvegardes et les restaurations des éléments de l’infrastructure
 *Mettre en œuvre des stratégies de sauvegarde et de restauration, tester leur efficacité pour garantir la reprise après incident.*  

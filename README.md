@@ -3,19 +3,19 @@
 ## Activité type 1 : Exploiter les éléments de l'insfrastructure et assurer le support aux utilisateurs
 ### CCP1 : Assurer le support utilisateur en centre de services
 *Répondre aux demandes des utilisateurs, diagnostiquer et résoudre les incidents, assurer un suivi et documenter les interventions.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/b45064d69f89ace344f8b9a6b72d2e5af76b88aa/Activit%C3%A9%20type%201/CCP1.md).
 
 ### CCP2 : Exploiter des serveurs Windows et un domaine Active Directory
 *Gérer un environnement Windows Server, administrer un domaine Active Directory, configurer les services réseau (DHCP, DNS, GPO).*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/ed6c33a2720126ae6752f6fe7ddfabab17ac9560/Activit%C3%A9%20type%201/CCP2.md).
 
 ### CCP3 : Exploiter des serveurs Linux
 *Installer, configurer et maintenir des serveurs Linux, gérer les utilisateurs, les permissions et les services réseau.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/ed6c33a2720126ae6752f6fe7ddfabab17ac9560/Activit%C3%A9%20type%201/CCP3.md).
 
 ### CCP4 : Exploiter un réseau IP
 *Administrer un réseau IP, configurer les équipements (routeurs, switches), surveiller le trafic et résoudre les incidents réseau.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/ed6c33a2720126ae6752f6fe7ddfabab17ac9560/Activit%C3%A9%20type%201/CCP4.md).
 
 ## Activité type 2 : Maintenir l'infrastructure et contribuer à son évolution et à sa sécurisation
 ### CCP5 : Maintenir des serveurs dans une infrastructure virtualisé

@@ -36,4 +36,4 @@ Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blo
 
 ### CCP9 : Exploiter et maintenir les services de déploiement des postes de travail
 *Configurer et gérer le déploiement automatisé des postes de travail via des outils comme WDS.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/fc8fcf04da1f6fb4c11bf86b815a1245c3316895/Activit%C3%A9%20type%202/CCP9.md).

@@ -24,7 +24,7 @@ Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blo
 
 ### CCP6 : Automatiser des tâches à l'aide de scripts
 *Créer et exécuter des scripts en Bash et PowerShell pour automatiser les tâches répétitives et améliorer l’efficacité.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/84b131b82c18c0f871eea5d3a3b5a660790bce6b/Activit%C3%A9%20type%202/CCP6.md).
 
 ### CCP7 : Maintenir et sécuriser les accès à internet et les interconnexions des réseaux
 *Configurer et sécuriser les pare-feu, VPN et proxies, assurer la continuité et la protection des accès réseau.*  

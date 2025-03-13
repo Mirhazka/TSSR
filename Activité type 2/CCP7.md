@@ -60,20 +60,37 @@ Les machines clientes ont un accès restreint, tandis que les serveurs accessibl
 ## Journalisation
 ### GNU / Linux
 - Syslog (date, hôte du message, service/processus, ID, priorité, le message)
-	- 24 catégories de messages (0 à 23)
-	- Les 8 derniers (16 à 23) sont réservées
-	- Stocké dans */var/log/*
-		- /var/log/auth.log
-		- /var/log/kern.log
+  - 24 catégories de messages (0 à 23)
+  - Les 8 derniers (16 à 23) sont réservées
+  - Stocké dans */var/log/*
+    - /var/log/auth.log
+    - /var/log/kern.log
 - Systemd 
-	- au format binaire dans /run/systemd/journal
-	- outil : *journalctl*
-	- peut transmettre à syslog
+  - au format binaire dans /run/systemd/journal
+  - outil : `journalctl`
+  - peut transmettre à syslog
 - Analyse des logs
-	- logwatch
-	- graylog
-	- loganalyzer
+  - logwatch
+  - graylog
+  - loganalyzer
 
 ### Windows
-- L'observateur d'évènements (event viewer)
--  
+- L'observateur d'évènements (event viewer) est le journal dans lequel toute l'activité est enregistrée
+  - Information simple
+  - Enregistrement d'erreurs de fonctionnalités
+- Les fichiers de logs sont dans `C:\Windows\System32\winevt\Logs`
+- 3 niveaux de criticité :
+  - High
+  - Medium
+  - Low
+- Quelques event ID intéressant
+  - 4624 : logon normal avec succès
+  - 4625 : logon avec erreur de connexion
+  - 4740 : compte verrouillé
+  - 4728 : ajout d’un utilisateur à un groupe de sécurité global
+  - 4732 : ajout d’un utilisateur à un groupe de sécurité local
+  - 4756 : ajout d’un utilisateur à un groupe de sécurité universel
+  - 4663 : tentative d’accès à des objets
+  - 1102 : suppression des journaux
+
+

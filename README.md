@@ -20,7 +20,7 @@ Vous trouverez la page correspondante [ici]().
 ## Activité type 2 : Maintenir l'infrastructure et contribuer à son évolution et à sa sécurisation
 ### CCP5 : Maintenir des serveurs dans une infrastructure virtualisé
 *Gérer la virtualisation avec des outils comme Proxmox, VMware ou Hyper-V, assurer la disponibilité et l’optimisation des performances.*  
-Vous trouverez la page correspondante [ici]().
+Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/ceebb8ff569e85fff671e438623424fa9da93d08/Activit%C3%A9%20type%202/CCP5.md).
 
 ### CCP6 : Automatiser des tâches à l'aide de scripts
 *Créer et exécuter des scripts en Bash et PowerShell pour automatiser les tâches répétitives et améliorer l’efficacité.*  

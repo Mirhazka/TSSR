@@ -116,7 +116,5 @@ IDS | IPS
 --- | ---
 Intrusion Detection System | Intrusion Prevention System
 Network IDS & Host IDS | Nework IPS, Host-Based IPS, Kernel IPS
-Analyse seulement l'activité pour détecter toute intrusion | Analyse l'activité pour détecter toute intrusion et sécurise
-
-
-
+Un IDS peut détecter une possible attaque et alerter mais il ne peut pas l'interrompre | Un IPS peut détecter une possible attaque, alerter et il peut l'interrompre
+Snort,  Splunk | Snort, Fail2ban

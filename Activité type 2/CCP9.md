@@ -319,7 +319,18 @@ wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sud
 #### ✅ **Bonnes pratiques**  
 - **Utiliser uniquement des dépôts officiels**.  
 - **Faire des mises à jour régulières** pour la sécurité.  
-- **Vérifier les dépendances avant de supprimer un paquet**.  
+- **Vérifier les dépendances avant de supprimer un paquet**.
+
+### **Utilité d'un Dépôt Local de Paquets**  
+#### 📌 **Pourquoi utiliser un dépôt local ?**  
+Dans le cadre d'un déploiement de postes clients Linux, un **dépôt local de paquets** permet de :  
+✔️ **Éviter le téléchargement des paquets depuis Internet** sur chaque machine.  
+✔️ **Accélérer l’installation et les mises à jour** en utilisant un serveur local.  
+✔️ **Réduire la consommation de bande passante** sur le réseau.  
+✔️ **Garantir le contrôle des versions** des logiciels installés sur les clients.  
+✔️ **Améliorer la sécurité** en validant et stockant uniquement des paquets de confiance.  
+
+Un dépôt local est souvent mis en place avec des outils comme **APT-mirror** (Debian/Ubuntu) ou **Pulp** (Red Hat).
 
 ### 🏁 **Conclusion**  
 ✔️ Les gestionnaires de paquets facilitent l’installation, la mise à jour et la suppression des logiciels sous Linux.  

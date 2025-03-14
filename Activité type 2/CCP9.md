@@ -1,6 +1,6 @@
 # Exploiter et maintenir les services de déploiement des postes de travail
 
-## Suivi de parc
+## Suivi de parc informatique 
 
 ---
 

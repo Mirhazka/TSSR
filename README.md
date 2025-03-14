@@ -1,4 +1,17 @@
 # Formation TSSR
+## Introduction
+
+Cette section présente les activités et compétences développées dans le cadre de la formation TSSR (Technicien Supérieur Systèmes et Réseaux). Elle est organisée autour de deux grandes catégories d'activités :
+
+1. **Activité type 1 : Exploiter les éléments de l'infrastructure et assurer le support aux utilisateurs**  
+   Cette première catégorie se concentre sur l'exploitation des services, l'administration des serveurs, et la gestion des réseaux. Elle couvre des compétences essentielles comme la gestion du support utilisateur, l'exploitation de serveurs Windows et Linux, ainsi que la gestion des réseaux IP.
+
+2. **Activité type 2 : Maintenir l'infrastructure et contribuer à son évolution et à sa sécurisation**  
+   La seconde catégorie aborde la maintenance, l'automatisation, et la sécurisation des infrastructures informatiques. Elle inclut des compétences sur la virtualisation, l'automatisation des tâches, la sécurité des accès réseau et la gestion des sauvegardes.
+
+Pour chaque activité, des liens sont fournis pour accéder aux pages détaillées de la documentation et des projets associés.
+
+---
 
 ## Activité type 1 : Exploiter les éléments de l'insfrastructure et assurer le support aux utilisateurs
 ### CCP1 : Assurer le support utilisateur en centre de services
@@ -16,6 +29,8 @@ Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blo
 ### CCP4 : Exploiter un réseau IP
 *Administrer un réseau IP, configurer les équipements (routeurs, switches), surveiller le trafic et résoudre les incidents réseau.*  
 Vous trouverez la page correspondante [ici](https://github.com/Mirhazka/TSSR/blob/ed6c33a2720126ae6752f6fe7ddfabab17ac9560/Activit%C3%A9%20type%201/CCP4.md).
+
+---
 
 ## Activité type 2 : Maintenir l'infrastructure et contribuer à son évolution et à sa sécurisation
 ### CCP5 : Maintenir des serveurs dans une infrastructure virtualisé

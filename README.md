@@ -12,7 +12,7 @@ Cette section présente les activités et compétences développées dans le cad
 3. **Liste des ports**  
    Ce document présente une liste des ports utilisés dans les différentes configurations réseau et services pour garantir la sécurité et la bonne gestion des flux. Cette liste est essentielle pour la configuration des pare-feu, des serveurs et pour assurer une communication efficace au sein de l'infrastructure.
 
-Pour chaque activité, des liens sont fournis pour accéder aux pages détaillées de la documentation et des projets associés.
+Pour chaque activité, des liens sont fournis pour accéder aux pages détaillées de la documentation et des projets associés.  
 Pour la liste des ports, cliquez [ici](https://github.com/Mirhazka/TSSR/blob/da87281f7903aaf863288374030736c11bcef182/Ressources/ports.md).
 
 ---

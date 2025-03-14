@@ -94,7 +94,29 @@ Les machines clientes ont un accès restreint, tandis que les serveurs accessibl
   - 1102 : suppression des journaux
 
 ## Supervision
+C'est la **surveillance** du bon fonctionnement d'un système, cela permet d'**observer à distance ce qui se passe sur un réseau**. La supervision est une aide à :
+- La détection (pannes/incidents systèmes, services, historique)
+- La modifications (configuration, révision de documentation)
+- La disponibilité (consommation de ressources, débit)
+- L'amélioration des performances (suivi statistique)
+- La prévention des activités suspectes
 
-## Radius
+En suivant, nous avons l'**hypervision** qui centralise les outils de supervision d'infrastructure, d'applications et de référentiels. La supervision utilise le protocole **SNMP** (Simple Network Management Protocol) et la base de donnée **MIB**(Management Information Base).  
+  
+Exemple de logiciel de supervision :
+- Solarwinds
+- PRTG
+- NextThink
+- Nagios
+- Zabbix
 
 ## IDS & IPS
+
+IDS | IPS
+--- | ---
+Intrusion Detection System | Intrusion Prevention System
+Network IDS & Host IDS | Nework IPS, Host-Based IPS, Kernel IPS
+Analyse seulement l'activité pour détecter toute intrusion | Analyse l'activité pour détecter toute intrusion et sécurise
+
+
+

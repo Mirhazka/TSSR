@@ -71,7 +71,35 @@
 
 ---
 
-## WSUS
+## WSUS (Windows Server Update Services)
+
+- **WSUS** est un rôle intégré à Windows Server qui permet de gérer la distribution des mises à jour des produits Microsoft sur les postes de travail et les serveurs.
+  - **Prérequis matériels** :  
+    - 2 CPU  
+    - Minimum 16 Go de RAM  
+    - 2 volumes :  
+      - 128 Go pour le système  
+      - 256 Go pour le stockage des mises à jour
+  - **Ports par défaut** : 8530 (HTTP)
+
+- **Pourquoi ne pas laisser chaque machine gérer les mises à jour en autonomie ?**
+  - Une machine ne peut pas redémarrer à n'importe quel moment sans impacter l'utilisateur.
+  - Une machine ne peut pas installer des mises à jour à la volée sans risquer de bloquer les ressources ou de déranger les utilisateurs.
+
+- **Le rôle ADDS (Active Directory Domain Services)** n'est pas obligatoire pour WSUS, mais il est **conseillé**.
+  - Il est possible de créer des groupes d'ordinateurs dans WSUS et de les lier avec l'Active Directory via des **GPO (Group Policy Objects)** pour une gestion plus fine des mises à jour.
+
+- Pour nettoyer le serveur des vieilles mises à jour, il est conseillé d'utiliser l'outil **Server Cleanup Wizard**.
+
+### Concepts importants
+
+- **Le Patch Tuesday**  
+  **C'est quoi ?** Le Patch Tuesday est le deuxième mardi de chaque mois, date à laquelle Microsoft publie des mises à jour de sécurité et de maintenance pour ses produits.  
+  **Utilité** : Cela permet aux administrateurs de planifier les mises à jour et de s'assurer que les systèmes sont protégés contre les vulnérabilités de sécurité.
+
+- **Avantage d'utiliser WSUS avec SCCM (System Center Configuration Manager)**  
+  **C'est quoi ?** SCCM est un outil de gestion centralisée des configurations et des déploiements dans un environnement informatique.  
+  **Utilité** : L'utilisation combinée de WSUS et SCCM permet de gérer de manière centralisée les mises à jour des systèmes tout en offrant des fonctionnalités avancées de déploiement, de surveillance, et de gestion des correctifs à grande échelle.
 
 ---
 

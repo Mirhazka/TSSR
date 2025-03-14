@@ -119,6 +119,81 @@ Un **parc informatique** désigne l’ensemble des ressources matérielles et lo
 ---
 
 ## Gestion des mises à jour
+### **Définition & Objectifs**  
+#### 📌 **Qu'est-ce qu'une mise à jour ?**  
+- Modification apportée à un logiciel ou un OS pour :  
+  - **Sécurité** : correction de vulnérabilités (ex : antivirus, failles critiques).  
+  - **Performances** : amélioration des pilotes et composants.  
+  - **Fonctionnalités** : ajout de nouvelles options.  
+  - **Correction de bugs** : correction de dysfonctionnements.  
+
+#### 🚨 **Exemples de failles majeures**  
+- **Heartbleed (2012)**
+- **WannaCry (2017)**
+- **Spectre (2018)**
+- **Log4Shell (2021)**  
+
+### **Types de mises à jour**  
+#### 🔹 **Classification**  
+- **Mises à jour de fonctionnalité** : nouvelles capacités d’un logiciel/OS.  
+- **Correctifs** : corrections de bugs mineurs.  
+- **Mises à jour de sécurité** : corrections de failles critiques.  
+
+#### 🔹 **Gravité des mises à jour**  
+- **Mineure** : corrections de bugs, améliorations visuelles.  
+- **Majeure** : nouvelles fonctionnalités, refonte d'un système.  
+- **Critique** : corrections de failles de sécurité (ex : "zero-day").  
+
+### **Stratégies de Gestion des Mises à Jour**  
+#### 🔄 **Déploiement des mises à jour**  
+- **Déploiement immédiat** :  
+  ✅ Rapidité et simplicité.  
+  ❌ Risque d’incompatibilités et d’erreurs.  
+  *Utilisé pour les particuliers et PME.*  
+
+- **Déploiement testé** :  
+  ✅ Fiabilité et planification.  
+  ❌ Délais et ressources nécessaires.  
+  *Utilisé en entreprise et SI dédié.*  
+
+#### 🔹 **Patch Management**  
+- Automatisation de la gestion des mises à jour via un serveur central.  
+- Publication automatique des MAJ.  
+- Délais d’installation configurables.  
+
+### **Outils de Gestion des Mises à Jour**  
+#### 🖥 **Solutions dédiées**  
+- **WSUS (Windows Server Update Services)**  
+  - Centralisation et gestion des MAJ Microsoft.  
+  - Économie de bande passante, automatisation.  
+- **Ivanti Patch Management**  
+  - Gère les mises à jour Windows et autres éditeurs.  
+- **APT (Advanced Package Tool - Linux)**  
+  - Gestion des mises à jour des distributions basées sur Debian (Ubuntu).  
+
+## **Études de Cas & Enjeux**  
+#### ⚠️ **Risques liés à l’absence de mises à jour**  
+- **Sécurité** : vulnérabilités exploitables par des cyberattaques.  
+- **Performance** : ralentissements et incompatibilités système.  
+- **Conformité** : non-respect des normes CNIL, RGPD.  
+- **Réputation** : perte de confiance des clients et partenaires.  
+
+#### 🏭 **Cas en milieu industriel**  
+- **Problème** : MAJ de Windows bloquant certains logiciels métier.  
+- **Solutions** :  
+  - Isoler totalement le système d’Internet (*mais perte de protection antivirus*).  
+  - Mettre en place un **plan de maintenance** et un **serveur de mises à jour**.  
+
+#### ✅ **Bonnes pratiques en entreprise**  
+- **Ne pas tarder à tester et déployer.**  
+- **Télécharger uniquement depuis des sources officielles.**  
+- **Définir les cibles des MAJ (machines, OS, applications).**  
+- **Planifier la publication et l’installation.**  
+
+### **Conclusion**  
+✔️ La gestion des mises à jour est un élément vital pour la **sécurité**, la **performance** et la **stabilité** des systèmes informatiques.  
+✔️ Il est crucial d’adopter une stratégie adaptée pour éviter les risques liés à l’inaction.  
+✔️ Des outils comme **WSUS, Ivanti ou APT** permettent d’automatiser et de sécuriser le processus.  
 
 ---
 

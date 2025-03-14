@@ -1,6 +1,57 @@
 # Exploiter et maintenir les services de déploiement des postes de travail
 
 ## Suivi de parc informatique 
+### **Définition**  
+Un **parc informatique** désigne l’ensemble des ressources matérielles et logicielles d’un SI :  
+- **Matériel** : ordinateurs, équipements réseau, périphériques, appareils mobiles.  
+- **Logiciels** : OS, applications, licences associées.  
+
+### **Gestion du Parc Informatique**  
+#### 🛠 **Entretien**  
+- **Recensement & Inventaire** : outils comme Fusion Inventory, SCCM, GLPI.  
+- **Maintenance préventive** : planification mensuelle/annuelle.  
+- **Dépannage** : classification par criticité (standard, bloquant, urgent).  
+
+#### 🚀 **Développement**  
+- **Renouvellement** : cycle de 3-6 ans selon le type de matériel.  
+- **Prévisions budgétaires** : sur 3 ans, établies entre septembre et novembre.  
+
+#### 📈 **Optimisation**  
+- **Sécurité** : protection des équipements, sensibilisation à la cybersécurité (RGPD).  
+- **Gestion des prestataires** : contrôle du niveau de connaissance transmis à un tiers.  
+
+### **Méthodes de Gestion**  
+#### 🖥 **Uniformisation**  
+- Matérielle et logicielle : optimisation des coûts et de la maintenance.  
+- Profils de postes : IT, admin, dev, utilisateurs standards.  
+
+#### 📊 **Base de données matérielle (CMDB)**  
+- Stockage et mise à jour des données en temps réel (ex. GLPI).  
+- Informations conservées : ID matériel, réseau, logiciels, statut, utilisateurs.  
+
+#### ✅ **Qualité & Processus**  
+- **Cycle de vie** du matériel :  
+  - PC fixe : 5 ans | PC portable : 3 ans | Serveur : 5 ans | Périphériques : 3-5 ans.  
+- **Méthode 5M (Ishikawa)** : Main-d'œuvre, Matériel, Méthodes, Matières, Milieu.  
+
+### **Gestion des Appareils Mobiles**  
+#### 📱 **Quels appareils ?**  
+- Smartphones, tablettes, IoT, terminaux industriels.  
+
+#### 🔧 **Mobile Device Management (MDM)**  
+- Gestion en **temps réel** des équipements mobiles.  
+- **Actions** : mises à jour, politiques de sécurité, installation d’apps, suivi de localisation.  
+- **Exemples de logiciels** : IBM Maas 360, MobileIron.  
+
+### **Outils de Gestion de Parc**  
+#### 🏢 **GLPI (Gestion passive du parc)**  
+- **CMDB + Helpdesk** : gestion des ressources informatiques et des demandes d’assistance.  
+- **Nature statique** : suivi, documentation, rapports, pas d’intervention en temps réel.  
+
+### **Conclusion**  
+✔️ Suivi du matériel et des logiciels.  
+✔️ Entretien, développement et optimisation.  
+✔️ Méthodes de gestion (MDM, GLPI).  
 
 ---
 

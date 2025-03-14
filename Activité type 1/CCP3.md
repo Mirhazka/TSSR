@@ -56,6 +56,51 @@ Les fichiers dans /dev sont utilisés pour accéder aux périphériques matérie
 mkfs.ext4 /dev/sdX
 ```
 
+#### À la création d'un système de fichier
+1. **UUID** : Un identifiant unique pour chaque système de fichiers.
+2. **Étiquette (Label)** : Possibilité d'attribuer un label au système de fichiers.
+3. **Paramètres** : Choix des options (taille des blocs, journalisation…).
+
+#### Outils complémentaires
+- **fsck** : Vérifie et répare les systèmes de fichiers.
+- **resize2fs** : Redimensionne un système de fichiers ext2/3/4.
+- **e2label** : Change l'étiquette d'un système de fichiers ext2/3/4.
+- **badblocks** : Recherche les blocs défectueux.
+- **tune2fs** : Paramètre un système de fichiers ext2/3/4 (ex : fréquence des vérifications).
+
+### Commandes utiles pour la gestion du stockage
+
+#### Gestion des périphériques et UUID
+- **lsblk** : Affiche les périphériques de stockage et leurs UUID.
+- **blkid** : Affiche des informations similaires mais à un niveau plus bas.
+- **Liens symboliques dans /dev/disk/by-uuid** : Utilisés pour accéder aux périphériques via leur UUID.
+
+#### Monter et démonter des systèmes de fichiers
+- **mount** : Monte un système de fichiers dans l'arborescence :
+    - Syntaxe : `mount /dev/sdX /chemin/de/montage`
+- **umount** : Démonte un système de fichiers :
+    - Syntaxe : `umount /chemin/de/montage`
+- **/etc/fstab** : Fichier de configuration pour les montages automatiques au démarrage.
+
+#### Commandes de gestion de fichiers
+- **pwd** : Affiche le répertoire courant.
+- **ls** : Affiche le contenu d'un répertoire.
+- **cat** : Affiche le contenu d'un fichier.
+- **more/less** : Affichage paginé du contenu d'un fichier.
+- **head/tail** : Affiche le début ou la fin d'un fichier.
+- **cp** : Copie un fichier ou un dossier.
+- **mv** : Déplace ou renomme un fichier ou un dossier.
+- **rm** : Supprime un fichier ou un dossier.
+- **mkdir** : Crée un dossier.
+- **rmdir** : Supprime un dossier (vide).
+- **touch** : Crée un fichier ou met à jour la date d'accès.
+- **which/whereis/locate** : Trouve un fichier.
+- **diff** : Affiche les différences entre deux fichiers.
+- **wc** : Compte les lignes, mots ou caractères d'un fichier.
+- **grep** : Filtre les lignes d'un fichier en fonction d'un motif.
+- **find** : Recherche des fichiers.
+- **sed** : Édition de fichier texte en ligne.
+- **awk** : Traitement de fichier par champs.
 
 ---
 

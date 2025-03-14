@@ -1,7 +1,7 @@
 # Maintenir et sécuriser les accès à Internet et les interconnexions des réseaux
 
 ## Le modèle TCP/IP vs Le modèle OSI
-![image](https://raw.githubusercontent.com/Mirhazka/TSSR/refs/heads/main/Ressources/tcpip-comparatif.webp?token=GHSAT0AAAAAADAOUSMXYAH2PWFPNYFNWKVEZ6TMCUQ)
+![image](https://github.com/Mirhazka/TSSR/blob/dde4df851017de6a5a842c4858e33c5d897eb56c/Ressources/tcpip-comparatif.webp)
 
 ### Couche 1 : Physique
 - Encodage du signal, câblage et connecteurs, spécifications physiques.

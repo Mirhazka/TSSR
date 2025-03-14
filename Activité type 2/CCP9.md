@@ -230,3 +230,98 @@ Un **parc informatique** désigne l’ensemble des ressources matérielles et lo
 ---
 
 ## APT
+### **Définition & Rôle**  
+#### 🛠 **Qu'est-ce qu'un gestionnaire de paquets ?**  
+Un gestionnaire de paquets est un outil qui automatise l’installation, la mise à jour et la suppression de logiciels sur un système Linux, tout en gérant les **dépendances** et les **dépôts**.  
+
+#### 🔹 **Notions clés**  
+- **Paquet** : archive contenant un programme, ses bibliothèques et ses métadonnées.  
+- **Dépendances** : certains paquets nécessitent d'autres paquets pour fonctionner.  
+- **Dépôt** : source officielle contenant des paquets validés pour la distribution.  
+
+### **Principaux Gestionnaires de Paquets**  
+#### 🔹 **Spécifiques aux distributions**  
+- **APT** : Debian, Ubuntu, Mint  
+- **YUM/DNF** : Red Hat, Fedora, CentOS  
+- **Pacman** : Arch Linux  
+- **Zypper** : openSUSE  
+
+#### 🔹 **Gestionnaires universels avec isolation**  
+- **Snap** : développé par Canonical, fonctionne sur toutes les distributions.  
+- **Flatpak** : indépendant, utilisé par Fedora et d'autres.  
+- **AppImage** : exécutable sans installation ni dépendances.  
+
+### **Architecture & Fonctionnement**  
+#### 🖥 **Deux types de gestionnaires**  
+- **Bas niveau** : gestion des paquets individuels (ex. : `dpkg` pour Debian, `rpm` pour Red Hat).  
+- **Haut niveau** : gestion avancée avec dépendances et mises à jour automatiques (ex. : `APT`, `YUM`).  
+
+#### 📂 **Le fichier sources.list (APT - Debian)**  
+Contient les dépôts de paquets et se situe dans `/etc/apt/sources.list`.  
+Exemple :
+```
+deb http://deb.debian.org/debian/ stable main contrib non-free
+deb http://security.debian.org/debian-security stable-security main contrib non-free
+```
+
+### **Commandes de Base (APT - Debian)**  
+#### 📌 **Installation & Suppression de Paquets**  
+- Installer un paquet :  
+  ```bash
+  sudo apt install <paquet>
+  ```
+- Supprimer un paquet :  
+  ```bash
+  sudo apt remove <paquet>
+  sudo apt purge <paquet>  # Suppression complète avec fichiers de config
+  ```
+- Supprimer les dépendances inutiles :  
+  ```bash
+  sudo apt autoremove
+  ```
+
+#### 🔄 **Mise à jour du système**  
+- Mettre à jour la liste des paquets :  
+  ```bash
+  sudo apt update
+  ```
+- Mettre à jour les paquets installés :  
+  ```bash
+  sudo apt upgrade
+  ```
+- Mise à jour complète du système :  
+  ```bash
+  sudo apt update && sudo apt upgrade
+  ```
+
+#### 🔍 **Gestion des paquets**  
+- Lister les paquets installés :  
+  ```bash
+  dpkg -l
+  ```
+- Vérifier si un paquet est installé :  
+  ```bash
+  dpkg -s <paquet>
+  ```
+- Lister les fichiers d’un paquet :  
+  ```bash
+  dpkg -L <paquet>
+  ```
+
+### **Sécurité & Bonnes Pratiques**  
+#### 🔑 **Sécurisation des sources**  
+APT utilise des **clés GPG** pour vérifier l’authenticité des dépôts.  
+Exemple d'ajout d'une clé GPG pour Google Chrome :
+```bash
+wget -O- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg
+```
+
+#### ✅ **Bonnes pratiques**  
+- **Utiliser uniquement des dépôts officiels**.  
+- **Faire des mises à jour régulières** pour la sécurité.  
+- **Vérifier les dépendances avant de supprimer un paquet**.  
+
+### 🏁 **Conclusion**  
+✔️ Les gestionnaires de paquets facilitent l’installation, la mise à jour et la suppression des logiciels sous Linux.  
+✔️ Chaque distribution a ses outils spécifiques (`APT`, `YUM`, `Pacman`...), mais des solutions universelles existent (`Snap`, `Flatpak`).  
+✔️ Une bonne gestion des paquets améliore la **stabilité**, la **sécurité** et la **performance** du système.  

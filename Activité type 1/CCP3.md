@@ -149,7 +149,43 @@ Chaque processus possède des informations spécifiques :
 
 ---
 
-## Gestion des utilisateurs
+## 📌 Gestion des utilisateurs  
+
+### Les types de droits d’accès  
+Tout fichier ou dossier possède des droits attribués à 3 catégories :  
+- **UID (User ID)** → Propriétaire du fichier (**s’applique à l’utilisateur ayant le même UID**)  
+- **GID (Group ID)** → Groupe propriétaire du fichier (**s’applique aux membres de ce groupe**)  
+- **Other** → Tous les autres utilisateurs (**ne rentrant pas dans les deux premières catégories**)  
+
+###  L’affichage des droits d’accès  
+Les droits apparaissent sous la forme d’une chaîne de **10 caractères** :  
+- **1er caractère** → Type de fichier (**répertoire, fichier, lien symbolique, etc.**)  
+- **3x3 caractères suivants** → Définissent les droits pour les **User, Group, Other**  
+- **Un `-` signifie l’absence de droit**  
+
+### **Commande pour afficher les droits d’un fichier/dossier** :  
+```bash
+ls -l
+```
+### **Les droits avancés ACL**
+Les ACL (Access Control Lists) permettent de définir des droits plus précis que le modèle classique.
+
+✅ Exemple : Ajouter un accès en lecture pour l’utilisateur `wilder` sur le fichier `text.txt`
+
+```bash
+setfacl -m u:wilder:r text.txt
+```
+### **Afficher les droits ACL :**
+
+``` bash
+getfacl text.txt
+```
+### Quelques commandes utiles
+- `ls -l` → Affiche les droits des fichiers d’un répertoire
+- `chown utilisateur:fichier` → Change le propriétaire d’un fichier
+- `chmod 755 fichier` → Modifie les droits d’accès
+- `setfacl -m u:utilisateur:permission fichier` → Ajoute/Supprime des droits ACL
+- `getfacl fichier` → Affiche les droits ACL
 
 ---
 

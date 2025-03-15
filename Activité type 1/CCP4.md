@@ -320,10 +320,127 @@ ipconfig /renew
 
 ---
 
-## Adresse IPv6
+## 📌 IP Version 6 – Adresse et Paquet  
+### 🚀 Objectifs d’IPv6  
+- **Étendre les capacités d’adressage** (128 bits).  
+- **Simplifier les en-têtes** (meilleure efficacité).  
+- **Automatiser la configuration** (SLAAC).  
+- **Améliorer la sécurité** (IPsec natif).  
+- **Réduire la fragmentation** (éviter fragmentation en route).  
+
+### 📍 Les adresses IPv6  
+
+#### 🔢 Format des adresses  
+- **128 bits** (≈ `3,4 × 10³⁸` adresses possibles).  
+- **Notation hexadécimale** en **8 groupes de 16 bits** séparés par `:`.  
+- **Simplifications** :  
+  - **Suppression des zéros en tête** (ex: `0012` → `12`).  
+  - **Remplacement d’une suite de groupes `0000` par `::`** (une seule fois).  
+- **Exemples** :  
+```plaintext
+  2001:0db8:0000:85a3:0000:0000:ac1f:8001  
+  ↓
+  2001:db8:0:85a3::ac1f:8001  
+```
+
+- **Notation CIDR** pour le découpage (ex: `2001:db8::/64`).
+
+#### Catégories d’adresses
+- **Unicast** : Une seule interface.
+- **Multicast** : Transmission à plusieurs destinataires.
+- **Anycast** : Transmission à une seule interface parmi plusieurs.  
+❌ **Suppression du broadcast** (remplacé par multicast).
+
+#### 🔍 Adresses particulières
+- `::1` → **Boucle locale** (`127.0.0.1` en IPv4).
+- `::` → **Adresse indéfinie** (`0.0.0.0` en IPv4).
+- `ff00::/8` → **Multicast**.
+- `fe80::/10` → **Lien-local** (utilisé pour la découverte de voisins, non routable).
+- `fc00::/7` → **Adresses locales uniques (ULA)**, privées et non routables sur Internet.
+
+#### 🏢 Adresses publiques et routage
+
+- **Préfixe global** (ex: `2a00::/12` pour RIPE NCC).
+- **Attribution hiérarchique** (IANA → RIR → LIR → FAI → Clients).
+- **Politique d’attribution** : Un site peut avoir **plusieurs réseaux** (`/64` minimum, `/48` pour les grandes structures).
+
+### 🔄 Auto-configuration IPv6 (SLAAC)
+
+#### 🛠️ Objectif
+- **Configuration automatique** sans DHCP obligatoire.
+- **Facilité de re-numérotation** (utile pour les changements de FAI).
+- **Durée de vie des adresses** pour éviter des conflits.
+
+#### 🎯 Identifiant d’interface
+- **64 bits** (ex: dérivé de l’adresse MAC via EUI-64).
+- **Méthodes** :
+    - **Génération aléatoire** (RFC 8981).
+    - **Basé sur la MAC** (RFC 4291).
+    - **Basé sur cryptographie** (RFC 3972).
+
+#### 📌 Préfixe réseau
+- **Lien-local (`fe80::/64`)** → Toujours configuré automatiquement.
+- **Autres adresses** → Annoncées par **Router Advertisement (RA)** via **ICMPv6**.
+### 📦 Le paquet IPv6
+
+#### 🏛️ Structure de l'en-tête
+1. **Version** (4 bits) → Toujours `6`.
+2. **Traffic Class** (8 bits) → Priorité et QoS.
+3. **Flow Label** (20 bits) → Gestion des flux.
+4. **Payload Length** (16 bits) → Taille des données transportées.
+5. **Next Header** (8 bits) → Indique le protocole encapsulé (ex: TCP = 6, UDP = 17).
+6. **Hop Limit** (8 bits) → Nombre max de sauts (**équivalent TTL IPv4**).
+7. **Source Address** (128 bits) → IP source.
+8. **Destination Address** (128 bits) → IP destination.
+
+#### ❌ Pas de fragmentation en route
+- **IPv6 ne fragmente pas en route** → Requiert **Path MTU Discovery (PMTUd)** (RFC 8201).
+- **Si un paquet est trop grand** :
+    - Le routeur le **rejette**.
+    - Il envoie un message ICMPv6 pour informer l’expéditeur.
+
+### 🔄 Protocoles associés
+
+#### 🔎 **ICMPv6 (RFC 4443)**
+- **Messages d'erreur et de contrôle** (ex: `ping`, découverte des voisins).
+- **Utilisé pour SLAAC et NDP** (équivalent de ARP en IPv4).
+- **Transporté avec Next Header = `58` (0x3A)**.
+
+#### 🔄 **NDP (Neighbor Discovery Protocol, RFC 4861)**
+- Remplace **ARP et IGMP**.
+- **Router Advertisement (RA)** : Annonce les préfixes et paramètres réseaux.
+- **Router Solicitation (RS)** : Demande de configuration.
+- **Neighbor Solicitation (NS)** : Vérifie la présence d’un hôte.
+- **Neighbor Advertisement (NA)** : Réponse à NS.
+- **Redirect** : Optimisation du routage.
+
+#### 🏠 **DHCPv6 (RFC 3315)**
+- **Optionnel** (SLAAC peut suffire).
+- Utilisé pour **les DNS dynamiques** et autres paramètres spécifiques.
+- Utilise **Multicast** (`FF02::1:2`) sur **UDP ports 546 et 547**.
+
+#### 🔒 **IPsec (RFC 4301)**
+- **Sécurisation des communications IP**.
+- Inclus **nativement** dans IPv6 (mais optionnel en pratique).
+- Protocoles associés :
+    - **AH (Authentication Header)** → Intégrité et authentification.
+    - **ESP (Encapsulating Security Payload)** → Chiffrement.
+    - **IKE (Internet Key Exchange)** → Gestion des clés.
+
+#### 📡 **Mobilité IPv6 (RFC 6275)**
+- Permet à un hôte de conserver son adresse IP en **changeant de réseau**.
+- **Home Address** : Adresse fixe de l’utilisateur.
+- **Care-of Address** : Adresse temporaire obtenue dans le réseau visité.
+- **Home Agent** : Réachemine les paquets vers la bonne adresse.
+
+---
 
 ## Le routage IP
 
+---
+
 ## DNS
+
+---
 
 ## WiFi

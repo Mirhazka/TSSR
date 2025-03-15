@@ -97,6 +97,12 @@ Chaque processus possède des informations spécifiques :
 ---
 
 ## Gestion des utilisateurs
+### L'affichage des droits d'accès
+Comment je le vois ? Avec la commande `Get-Acl -Path c:\temp\file.txt | Format -List`.  
+
+### Quelques commandes
+- `get-acl` → Droits utilisateurs sur fichier ou répertoire
+- `set-acl` → Changement des droits sur fichier ou répertoire
 
 ---
 
@@ -105,11 +111,3 @@ Chaque processus possède des informations spécifiques :
 ---
 
 ## GPO
-
----
-
-## Cryptographie
-
----
-
-## SSH

@@ -1,96 +1,130 @@
 # Maintenir des serveurs dans une infrastructure virtualisée
 
-## Glossaire
+## 1. Architecture des ordinateurs 🖥️
+### C'est quoi ?
+L'architecture d'un ordinateur désigne l'organisation des composants matériels et leur interaction. Elle détermine la manière dont le processeur, la mémoire, les périphériques et les autres éléments sont agencés et interagissent.
 
-- **L'émulation**
-  - C'est le processus de création d'un système qui reproduit la manière dont fonctionne un système (exemple : émulateur d'une console de jeu).
-- **La simulation**
-  - C'est une représentation numérique d'un système réel ou fictif basée sur un modèle abstrait (simple ou complexe). Exemples : simulation météorologique, de vol, boursière...
-- **La virtualisation**
-  - C'est le processus de création d'une version virtuelle des ressources informatiques, qu'elles soient matérielles ou logicielles.
-  - Elle reprend le concept de l'émulation MAIS en utilisant l'architecture du système hôte.
-- **Relation avec l'outil GNS3**
-  - Simulation du comportement d’interfaces réseaux connectées.
-  - Émulation de routeurs, switchs, ordinateurs.
-  - Virtualisation de routeurs, switchs, ordinateurs (en incorporant des VM et des conteneurs).
-- **Format de partitionnement**
-  - **MBR (Master Boot Record)** : Partitionnement Intel historique.
-  - **GPT (GUID Partition Table)** : Nouveau format de partitionnement.
+### Utilité
+L'architecture permet de déterminer les capacités de performance, de gestion de la mémoire, et de connectivité du système. Elle influence directement la stabilité et l'efficacité des serveurs.
+
+### Exemples
+- **Architecture x86** : Utilisée dans la majorité des PC et serveurs.
+- **ARM** : Architecture plus courante dans les appareils mobiles et les serveurs dédiés à l'efficacité énergétique.
+- **RISC (Reduced Instruction Set Computing)** : Utilisée dans des systèmes nécessitant des calculs rapides.
 
 ---
 
-## Les hyperviseurs
+## 2. Virtualisation 🌀
+### Hyperviseur Type 1 (Bare-metal) 🖥️
+Un **hyperviseur Type 1** fonctionne directement sur le matériel physique sans système d'exploitation hôte. Il est plus performant et plus sécurisé que le Type 2.
 
-### Les hyperviseurs de type 1
-- La virtualisation *bare-metal* s'exécute directement sur le matériel, offrant de meilleures performances et un noyau léger. Cependant, elle impose un seul hyperviseur possible et engendre des coûts matériels et logiciels plus élevés.
-- Les hyperviseurs de type 1, utilisés dans les centres de données et les applications à forte puissance de calcul, offrent des performances supérieures en interagissant directement avec le matériel (exemple : AWS, Azure, GCP).
-- **Exemples** :
-  - Proxmox
-  - VMware ESXi
+**Exemples** : VMware ESXi, Microsoft Hyper-V, Xen
 
-### Les hyperviseurs de type 2
-- L'hyperviseur de type 2 s'exécute à l'intérieur d'un autre OS, offrant une utilisation plus simple et la possibilité d'exécuter plusieurs hyperviseurs, mais avec moins de ressources matérielles que les hyperviseurs de type 1.
-- **Exemples** :
-  - VirtualBox
-  - VMware Workstation
+### Hyperviseur Type 2 (Hosted) 🖱️
+Un **hyperviseur Type 2** fonctionne sur un système d'exploitation hôte. Il est plus simple à mettre en place mais moins performant.
 
----
+**Exemples** : VMware Workstation, VirtualBox
 
-## La conteneurisation
-- La conteneurisation exécute des applications isolées sur un même OS, offrant de bonnes performances et une faible consommation de ressources, mais avec une isolation moins forte qu'en virtualisation.
-- Les conteneurs sont idéaux pour le déploiement d'applications, l'architecture de microservices et les pipelines CI/CD, garantissant une exécution cohérente et efficace des services.
-- **Exemples** :
-  - Docker
-  - Kubernetes
+### Cluster d'hyperviseur 🌐
+Un **cluster d'hyperviseurs** est un groupe de serveurs physiques hébergeant des hyperviseurs, permettant la gestion centralisée de la virtualisation et d'assurer la haute disponibilité des machines virtuelles.
 
----
+### Avantages
+- **Optimisation des ressources** : Maximisation de l'utilisation des serveurs physiques.
+- **Gestion simplifiée** : Création et gestion rapide des VM.
+- **Isolation** : Chaque machine virtuelle fonctionne indépendamment.
 
-## La haute disponibilité
-- Désigne la capacité d'un système à fonctionner en continu sans interruption, même en cas de défaillance d'un composant.
-- Assurée par des mécanismes comme la redondance, le basculement automatique et la récupération rapide.
-- **Éléments indispensables** :
-  - Redondance matérielle (serveurs, stockage).
-  - Système de répartition de charge (*Load Balancing*).
-  - Basculement automatique (*Failover*).
-  - Réplication des données en temps réel.
-  - Supervision du système.
-  - Plan de reprise d'activité (*PRA*) et plan de continuité (*PCA*).
+### Inconvénients
+- **Consommation des ressources** : Les hyperviseurs ajoutent une couche qui peut entraîner une surconsommation de ressources.
+- **Complexité** : La gestion des hyperviseurs et des VM peut devenir complexe dans un grand environnement.
 
 ---
 
-## Le cloud computing
-- Utilisation de ressources informatiques via Internet, offrant divers services.
-- **Modèles de service** :
-  - **IaaS** (*Infrastructure as a Service*) : Fourniture de ressources virtuelles (serveurs, stockage, réseaux).
-  - **PaaS** (*Platform as a Service*) : Plateforme pour développer, déployer et gérer des applications.
-  - **SaaS** (*Software as a Service*) : Applications accessibles via un navigateur (*Google Workspace, Microsoft 365*).
-- **Types de cloud** :
-  - **Public** : Accès partagé entre plusieurs clients.
-  - **Privé** : Infrastructure dédiée à une organisation.
-  - **Hybride** : Combinaison de cloud public et privé.
-- **Types d'hébergement** :
-  - **Mutualisé** : Ressources partagées entre plusieurs utilisateurs.
-  - **VPS** : Serveurs virtuels isolés dans un environnement partagé.
-  - **Dédié** : Serveur physique réservé à un seul utilisateur.
-  - **Conteneurisation** : Applications exécutées dans des conteneurs légers.
-- **Interfaces d'accès** :
-  - Shell (CLI)
-  - Web (interface graphique)
-  - API (programmation)
+## 3. Conteneurisation 🐳
+### C'est quoi ?
+La **conteneurisation** est une méthode qui permet de déployer des applications dans des environnements isolés appelés conteneurs, permettant une portabilité entre les environnements.
+
+### Utilité
+Elle permet de garantir la cohérence entre les environnements de développement, de test et de production. Elle est idéale pour les applications légères et évolutives.
+
+### Exemple : Docker
+**Docker** est un outil populaire de conteneurisation qui permet de créer, déployer et exécuter des applications dans des conteneurs. Chaque conteneur peut contenir tout le nécessaire pour faire tourner une application (dépendances, configurations, etc.).
+
+### Avantages
+- **Portabilité** : Un conteneur peut être exécuté sur n'importe quel système supportant Docker.
+- **Isolation** : Les applications fonctionnent indépendamment les unes des autres.
+- **Consommation faible** : Moins lourd qu'une machine virtuelle.
+
+### Inconvénients
+- **Sécurité** : Moins isolé que les hyperviseurs.
+- **Complexité de gestion** : L'orchestration de conteneurs (avec Kubernetes, par exemple) peut être complexe.
+
+### Différence entre conteneurisation et hyperviseur 🤔
+Bien que les conteneurs et les hyperviseurs permettent tous deux d'exécuter des applications de manière isolée, il existe des différences fondamentales entre les deux approches :
+
+- **Isolation** :
+  - **Hyperviseur** : Chaque machine virtuelle (VM) contient son propre système d'exploitation complet, ce qui les rend plus isolées les unes des autres. Chaque VM emploie une partie du système hôte et du matériel physique.
+  - **Conteneurisation** : Les conteneurs partagent le noyau du système hôte. Ils sont donc plus légers que les VMs, mais moins isolés.
+
+- **Performance** :
+  - **Hyperviseur** : Les VMs étant plus isolées et indépendantes, elles consomment plus de ressources, car chaque machine virtuelle a son propre système d'exploitation et ses propres applications.
+  - **Conteneurisation** : Les conteneurs étant plus légers (ils n'ont pas de système d'exploitation complet), ils utilisent moins de ressources et démarrent plus rapidement.
+
+- **Gestion des ressources** :
+  - **Hyperviseur** : Les VMs disposent de ressources dédiées (mémoire, processeur, etc.), ce qui peut offrir des performances plus prévisibles.
+  - **Conteneurisation** : Les conteneurs utilisent les ressources de manière plus flexible et partagée, ce qui peut être plus efficace mais moins prévisible en termes de performance sous charge.
+
+- **Portabilité** :
+  - **Hyperviseur** : Une VM peut être transférée entre différents hôtes mais nécessite souvent des ajustements si le matériel ou le système d'exploitation change.
+  - **Conteneurisation** : Les conteneurs sont plus portables, car ils incluent tout le nécessaire pour l'exécution d'une application, ce qui permet de les faire fonctionner facilement sur n'importe quelle machine ou cloud qui supporte Docker, sans modification.
 
 ---
 
-## Avantages de la virtualisation
-- **Optimisation des ressources** : Exécution de plusieurs systèmes sur un même serveur.
-- **Installation et déploiement facilites** : Templates permettant une création rapide d'environnements.
-- **Économie de matériel** : Plusieurs serveurs hébergés sur une même machine physique.
-- **Isolation** : Protection des VM contre les pannes des autres machines.
+## 4. Haute disponibilité 🔧
+### C'est quoi ?
+La **haute disponibilité (HA)** fait référence à un système conçu pour garantir une disponibilité continue, même en cas de défaillance d'un composant du système.
+
+### Utilité
+Elle permet d'assurer une continuité de service pour des applications critiques en minimisant les temps d'arrêt.
+
+### Exemples
+- **Cluster de serveurs** : Plusieurs serveurs configurés pour se prendre en charge en cas de panne de l'un d'eux.
+- **RAID (Redundant Array of Independent Disks)** : Une solution pour assurer la redondance des données au niveau du stockage.
+
+### Exemples supplémentaires
+- **Load balancing (Répartition de charge)** : Utilisation de serveurs supplémentaires pour répartir le trafic entre plusieurs instances. Exemple : **HAProxy**, **NGINX**.
+- **Replication (Réplique de base de données)** : Mise en place de serveurs de bases de données redondants pour garantir la continuité des services. Exemple : **MySQL Cluster**, **PostgreSQL avec streaming replication**.
+- **Disaster recovery (Plan de reprise après sinistre)** : Mise en place d'une infrastructure secondaire qui prend le relais en cas de défaillance majeure du système principal. Exemple : **Backup répliqué sur un autre site**, **Virtual Machine replication**.
+- **UPS (Uninterruptible Power Supply)** : Des alimentations sans coupure sont installées pour assurer la continuité de l'alimentation électrique, même en cas de panne de courant.
 
 ---
 
-## Inconvénients de la virtualisation
-- **Points de défaillance unique** : Une panne impacte toutes les VM.
-- **Besoins en matériel puissant** : Gestion de l'overhead (*ressources supplémentaires*).
-- **Dégradation des performances** : Inférieures à un OS natif.
-- **Complexité du diagnostic** : Erreurs possibles à plusieurs niveaux (*guest OS, host OS, hyperviseur, matériel*).
-- **Inadaptation possible** : Certaines applications exigeant un accès direct aux I/O matérielles peuvent être affectées.
+## 5. Cloud computing ☁️
+### IaaS (Infrastructure as a Service) 🌐
+**IaaS** fournit une infrastructure complète sur laquelle vous pouvez exécuter des applications. Vous louez des serveurs, des espaces de stockage et des réseaux sans avoir à gérer les équipements.
+
+**Exemples** : AWS EC2, Google Compute Engine
+
+### PaaS (Platform as a Service) 🎛️
+**PaaS** offre une plateforme complète pour le développement, le test et le déploiement d'applications. L'infrastructure sous-jacente est gérée par le fournisseur.
+
+**Exemples** : Heroku, Google App Engine
+
+### SaaS (Software as a Service) 💻
+**SaaS** propose des applications en ligne que les utilisateurs peuvent utiliser sans avoir à se soucier de la gestion de l'infrastructure ou de la plateforme.
+
+**Exemples** : Google Workspace, Office 365
+
+### Différents types de cloud ☁️
+- **Cloud public** : Les ressources sont gérées par un fournisseur externe (ex. : AWS, Microsoft Azure).
+- **Cloud privé** : L'infrastructure est utilisée exclusivement par une organisation.
+- **Cloud hybride** : Combinaison de clouds publics et privés, permettant une flexibilité maximale.
+
+### Différents types d'hébergement 🌍
+- **Hébergement mutualisé** : Plusieurs sites partagent le même serveur.
+- **Hébergement dédié** : Un serveur entier est dédié à un seul client.
+- **Hébergement cloud** : Utilisation de plusieurs serveurs pour l’hébergement d’applications ou de données.
+
+### Différents types d'interface d'accès 🔑
+- **Interface Web** : Accès via un navigateur web.
+- **API (Application Programming Interface)** : Permet l’intégration avec des applications tierces.
+- **Console CLI** : Accès via une ligne de commande pour une gestion plus avancée.

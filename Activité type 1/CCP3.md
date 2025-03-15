@@ -1,5 +1,5 @@
 # Exploiter des serveurs Linux
-## La gestion du stockage
+## 📌 La gestion du stockage
 ### L'abstraction
 - **Chemin absolu** : Définit un chemin complet à partir de la racine (`/`), comme `/home/wilder/` ou `/var/log/auth.log`.
 - **Chemin relatif** : Définit un chemin par rapport au répertoire courant, comme `./wilder` ou `./auth.log`.
@@ -104,7 +104,48 @@ mkfs.ext4 /dev/sdX
 
 ---
 
-## Gestion des processeurs et mémoire
+## 📌 Gestion des processeurs et mémoire  
+
+### Les métadonnées  
+Chaque processus possède des informations spécifiques :  
+- **PID** → Identifiant du processus  
+- **PPID** → Identifiant du processus parent  
+- **CMD** → Commande de lancement  
+- **UID** → Identifiant utilisateur associé  
+- **GID** → Identifiant groupe associé  
+- **TTY** → Terminal d’entrée/sortie  
+
+### Messages standards  
+💡 **Un processus peut envoyer un signal à un autre processus :**  
+- `SIGINT` → Interruption (CTRL + C dans un terminal)  
+- `SIGTERM` → Demande d’arrêt propre  
+- `SIGKILL` → Destruction forcée du processus par le noyau  
+- `SIGTSTP` → Mise en pause (`CTRL + Z`), reprise avec `fg`  
+- `SIGQUIT` → Arrêt avec **core dump** (`CTRL + \`)  
+- `SIGSEGV` → Erreur de segmentation (accès mémoire interdit)  
+
+👉 **La commande `kill` permet d'envoyer des signaux aux processus.**  
+
+### Quelques commandes utiles  
+
+#### 📋 Gestion des processus  
+- `ps` → Liste les processus  
+- `pstree` → Affiche l’arborescence des processus  
+- `top` → Liste les processus en temps réel selon leur consommation CPU  
+- `htop` → Version interactive de `top`  
+
+#### ❌ Gestion des signaux  
+- `kill` / `killall` → Envoi de signaux aux processus (ex: arrêt d’un programme)  
+- `fg` → Passe un processus en **premier plan**  
+- `bg` → Relance un processus en pause en **arrière-plan**  
+- `<commande> &` → Lance une commande directement en arrière-plan  
+- `nohup <commande>` → Lance un processus **détaché** de la session utilisateur  
+  - Ex: `nohup my_script.sh &` (continue même après fermeture du terminal)  
+
+#### ⏳ Planification des tâches  
+- `cron` → Exécute des tâches récurrentes  
+- `crontab` → Configure les tâches automatiques de `cron`  
+- `at` / `atq` / `atrm` / `batch` → Planifie des tâches uniques  
 
 ---
 

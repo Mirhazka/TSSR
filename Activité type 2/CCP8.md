@@ -1,153 +1,101 @@
 # Mettre en place, assurer et tester les sauvegardes et les restaurations des éléments de l'infrastructure
 
-## La sauvegarde
+## Sauvegarde 🗂️
 
 ### Types de sauvegarde
-- **Complète**  
-  - Duplique toutes les données  
-  - Long et consommateur de stockage  
-  - Restauration facile  
+Il existe plusieurs types de sauvegarde, chacun ayant ses propres avantages et inconvénients :
 
-- **Incrémentale**  
-  - Sauvegarde uniquement les modifications depuis la dernière sauvegarde  
-  - Rapide et peu consommateur de stockage  
-  - Restauration plus délicate  
+- **Sauvegarde complète** : Sauvegarde de l'ensemble des données sélectionnées. Elle prend beaucoup de temps mais permet une restauration rapide.
+- **Sauvegarde incrémentielle** : Sauvegarde des données modifiées depuis la dernière sauvegarde, qu'elle soit complète ou incrémentielle. Elle est rapide mais nécessite toutes les sauvegardes précédentes pour une restauration.
+- **Sauvegarde différentielle** : Sauvegarde des données modifiées depuis la dernière sauvegarde complète. Elle est plus rapide que la sauvegarde complète mais nécessite plus d'espace que l'incrémentielle.
 
-- **Différentielle**  
-  - Sauvegarde uniquement les modifications depuis la dernière sauvegarde complète  
-  - Compromis entre rapidité et stockage  
+### Règle du 3-2-1 🔒
+La règle du 3-2-1 stipule que :
+- **3 copies de données** : La donnée originale et deux sauvegardes.
+- **2 types de supports différents** : Exemple : disques durs externes, cloud, bandes.
+- **1 copie hors site** : Pour se protéger contre les catastrophes locales (incendie, vol, etc.).
 
-### Règle du 3-2-1
-- 3 copies de données  
-- 2 types de support différents  
-- 1 copie hors site  
+### Fréquence des sauvegardes ⏰
+La fréquence des sauvegardes dépend de l'importance des données et des exigences de l'entreprise :
+- Sauvegardes complètes mensuelles.
+- Sauvegardes incrémentielles quotidiennes ou hebdomadaires.
 
-### Fréquence des sauvegardes
-- **Régulièrement**  
-  - Avoir toujours des données fraîches  
-  - Minimiser la quantité de données perdues (compromis entre temps de sauvegarde et panne)  
-- **Fréquence = compromis**  
-  - Consommation en espace de stockage  
-  - Temps nécessaire pour les sauvegardes  
-  - Impact sur la production  
-- **Exemple classique**  
-  - 1 sauvegarde complète par semaine  
-  - 1 sauvegarde incrémentale par jour  
+### Péremption des sauvegardes ⏳
+Les sauvegardes doivent être conservées pendant une période définie, souvent en fonction de la politique interne :
+- **Sauvegardes quotidiennes** : Conservez-les pendant 7 à 30 jours.
+- **Sauvegardes mensuelles** : Conservez-les pendant 6 à 12 mois.
+- **Sauvegardes annuelles** : Conservez-les pendant plusieurs années selon la législation.
 
-### Péremption
-- **Durée de conservation d'une sauvegarde**  
-  - Minimum jusqu'à la prochaine sauvegarde complète  
-- **En général**, conserver les sauvegardes *longtemps* pour pouvoir revenir plus loin dans le temps  
-  - Compromission invisible  
-  - Données supprimées par erreur  
-  - Maladresse  
-- **Exemples de péremption**  
-  - Hebdomadaire pendant 1 à 2 mois  
-  - Mensuelles pendant 1 à 2 ans  
+### Supports de sauvegarde 💾
+Les supports de sauvegarde peuvent être variés :
+- Disques durs externes
+- Bandes magnétiques
+- Cloud (public ou privé)
+- Serveurs de sauvegarde dédiés
 
-### PRA & PCA
-- **PRA** : Plan de Reprise d'Activité (remettre en fonctionnement après une panne)  
-- **PCA** : Plan de Continuité d'Activité (maintenir l'activité malgré les pannes)  
+## Archivage 📂
 
-### Supports de sauvegarde
-- **Disques**  
-  - Autre disque du même serveur  
-  - Autre serveur  
-  - Autre site  
-- **Périphériques amovibles**  
-  - Bandes magnétiques  
-  - Disques durs externes  
-  - Disques optiques  
+### C'est quoi ?
+L'archivage est un processus de stockage des données inactives ou obsolètes, mais toujours nécessaires pour une consultation future.
 
-### Divers
-- **Planification des sauvegardes** dans les créneaux de faible utilisation (ex : la nuit)  
-  - Snapshot  
-  - Sauvegardes en ligne  
-  - Réseau dédié de sauvegardes  
-- **Restauration des sauvegardes**  
-  - Complète  
-  - Partielle  
-- **Clonage**  
-  - Installation & Restauration  
-  - Image complète d'une machine  
-    - Restauration plus rapide de la production  
-    - Sauvegardes plus volumineuses et plus longues  
-    - Nécessite souvent des outils particuliers  
-  - Machine virtuelle  
-    - Clonage beaucoup plus simple  
+### Utilité ?
+L'archivage permet de libérer de l'espace sur les serveurs tout en garantissant que les données peuvent être récupérées en cas de besoin pour des raisons légales, réglementaires ou historiques.
 
----
+### Exemple ?
+- **Archivage des logs systèmes** : Les logs peuvent être archivés après 30 jours pour libérer de l'espace tout en restant accessibles pour des audits.
+  
+### Durée d'archivage en fonction de la nature des données 🕒
+La durée de l'archivage dépend du type de données :
+- **Données financières** : 5 à 10 ans.
+- **Données personnelles** : En fonction des réglementations, souvent 5 ans maximum.
+- **Logs systèmes** : Environ 1 à 3 ans.
 
-## L'archivage
+## Le clonage 🖥️
 
-### Considérations
-Certaines données doivent être conservées légalement :
-- **Durée en fonction de leur nature**  
-  - Données comptables : 10 ans  
-  - Contrats et factures : 5 ans  
-  - Journaux de connexion : 6 mois à 1 an  
+### C'est quoi ?
+Le clonage consiste à créer une réplique exacte d'un système, d'un disque dur, ou d'un volume.
 
-### Contraintes particulières
-- Supports physiques adaptés à la longue conservation  
-- Obsolescence des formats de fichiers  
-- Garantie et vérification de l'intégrité  
-- Indexation et recherche  
+### Utilité ?
+- **Migration** : Déplacer un système d'un disque à un autre.
+- **Tests** : Créer des copies pour tester des modifications sans risquer de détruire le système principal.
+  
+### Exemple ?
+Cloner un serveur pour créer un environnement de test ou une réplication d'un serveur de production sur un autre.
 
----
-
-## La sécurité des systèmes
+## Sécuriser les systèmes 🔐
 
 ### Mise à jour
-- **Mise à jour rapide** des logiciels essentielle, mais risque pour la production  
-- Gestion des mises à jour avec tests et environnements dédiés : nécessité méthodologique  
+Assurer que tous les systèmes sont à jour est essentiel pour se protéger contre les vulnérabilités :
+- **Mises à jour logicielles** : Systèmes d'exploitation, logiciels, firmwares.
+- **Mises à jour de sécurité** : Correctifs spécifiques pour des failles découvertes.
 
-### Minimisation physique
-Disposer uniquement du nécessaire :
-- **Périphériques d'entrée** (USB, lecteur optique, etc.)  
-- **Périphériques réseaux** (Ethernet, Wi-Fi, Bluetooth)  
-  - Possibilité de désactiver et réactiver le matériel selon besoin  
-- **Composants d'administration à distance**  
+### Minimisation physique 🏢
+Réduire la surface d'attaque en désactivant les services non nécessaires et en verrouillant l'accès physique :
+- **Désactivation des ports inutilisés**.
+- **Protection des équipements par mot de passe BIOS/UEFI**.
 
-### Sécurité physique
-- Machine d'autorité de certification  
-- Restriction d'accès  
-- Mot de passe de démarrage (BIOS et/ou BOOT)  
-- Démarrage via périphériques amovibles désactivé  
-- Chiffrement des disques  
+### Sécurité physique 🚪
+Protéger les installations contre les accès non autorisés :
+- Contrôle d'accès physique avec des badges ou des clés.
+- Caméras de surveillance dans les salles serveur.
 
----
-
-## L'outil Bareos
+## Le logiciel Bareos 🖥️
 
 ### Composants de Bareos
-- **Bareos Director (bareos-dir)** : Chef d'orchestre  
-- **Bareos Console** : CLI  
-- **Bareos File Daemon (bareos-fd)** : Collecte les informations pour BSD, à installer sur les clients  
-- **Bareos Storage Daemon (bareos-sd)** : Effectue les sauvegardes  
-- **Catalogue** : L'ensemble des tâches de sauvegarde  
+Bareos (Backup Archiving Recovery Open Sourced) est un logiciel de sauvegarde open-source composé de plusieurs composants :
+- **Directeurs** : Coordonnent les tâches de sauvegarde et de restauration.
+- **Clients** : Installés sur les serveurs à sauvegarder.
+- **Stockage** : Gère l'endroit où les données sont stockées (disques, bandes).
+- **Console** : Interface d'administration en ligne de commande.
 
-### À savoir
-- Bareos peut sauvegarder des clients GNU/Linux et Windows  
-- **BAREOS** : Backup Archiving Recovery Open Sourced  
-- **bconsole** : Console Bareos  
-- **Bareos WebUI** : Composant facultatif  
-- **status dir** : Liste les jobs planifiés, en cours et terminés  
+### Interface web 🌐
+Bareos propose une interface web pour faciliter la gestion des sauvegardes et des restaurations via un navigateur.
 
-### Les jobs
-- **FileSet** : Ensemble de chemins de fichiers à sauvegarder  
-- **Client** : L'endroit où se trouvent les fichiers  
-- **Schedule** : Planification automatisée des jobs  
-- **Pool** : Ensemble des supports de stockage utilisés par un Storage Daemon pour un job  
-
----
-
-## Différences clés
-
-### Sauvegarde
-- Copie de données en production utilisées, permettant la restauration en cas de perte ou de corruption.  
-
-### Archivage
-- Stockage à long terme de données non utilisées en production, conservées pour des raisons légales ou historiques. Les données sont supprimées de la production.  
-
-### Clonage
-- Réplique exacte d'un système ou disque dur, souvent utilisée pour déployer des configurations identiques sur plusieurs machines.
+### Les jobs Bareos 🎯
+Les jobs dans Bareos représentent des tâches spécifiques, telles que des sauvegardes ou des restaurations :
+- **Job de sauvegarde** : Sauvegarde des données spécifiées.
+- **Job de restauration** : Restauration des données à partir d'une sauvegarde.
+- **Job de vérification** : Vérifie l'intégrité des sauvegardes.
+  
+### Exemple de job Bareos
+Un job de sauvegarde pourrait être configuré pour sauvegarder un serveur toutes les nuits à 2h00 et vérifier l'intégrité des sauvegardes chaque dimanche.

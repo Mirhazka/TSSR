@@ -63,11 +63,36 @@ Le NTFS est un système de fichiers développé par Microsoft pour les systèmes
 
 ---
 
-## Stockage avancé
+## 📌 Gestion des processeurs et mémoire
+### Les métadonnées  
+Chaque processus possède des informations spécifiques :  
+- **Id** → Identifiant du processus (**équivalent PID**)  
+- **ParentId** → Identifiant du processus parent (**équivalent PPID**)  
+- **UserName** → Nom de l’utilisateur associé (**équivalent UID**)  
+- **Group** → Groupe associé (**équivalent GID**)  
+- **Handles** → Nombre de handles ouverts par le processus (**assimilable aux fichiers ouverts**)  
+- **State** → État actuel du processus (**en cours d’exécution, suspendu, etc.**)  
+- **Path** → Chemin d’accès du répertoire de travail du processus  
 
----
+### Quelques Cmdlets PowerShell  
+#### 📋 Gestion des processus  
+- `Get-Process` → Récupération d’informations sur les processus  
+- `Stop-Process` → Arrêter un processus  
+- `Wait-Process` → Attendre la fin d’un processus  
+- `Start-Process` → Lancement d’un processus local  
+- `Invoke-Command` → Lancement d’une commande locale ou distante  
 
-## Gestion processeurs et mémoire
+#### 💻 Informations système  
+- `Get-ComputerInfo` → Récupération d’informations matérielles et système  
+- `Get-CimInstance` → Récupération d’objets WMI (Windows Management Instrumentation)  
+
+#### ⚙️ Gestion des services  
+- `Get-Service` → Liste et état des services  
+- `Stop-Service` → Arrêter un service  
+- `Start-Service` → Démarrer un service  
+- `Suspend-Service` → Mettre un service en pause  
+- `Restart-Service` → Redémarrer un service  
+- `Set-Service` → Modifier un service  
 
 ---
 

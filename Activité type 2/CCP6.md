@@ -1,14 +1,6 @@
 
 # Automatiser des tâches à l'aide de scripts 🛠️
 
-## Table des matières 📚
-1. [Les Shells 💻](#les-shells)
-2. [Git & GitHub 🌍](#git--github)
-3. [Scripting Bash 🐚](#scripting-bash)
-4. [Scripting PowerShell ⚡](#scripting-powershell)
-
----
-
 ## Les Shells 💻
 
 Le **Shell** est un interpréteur de commandes qui permet de communiquer avec le système d'exploitation. Il peut être utilisé pour automatiser des tâches, manipuler des fichiers et exécuter des commandes système.

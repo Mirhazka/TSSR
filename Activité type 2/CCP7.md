@@ -1,183 +1,153 @@
 # Maintenir et sécuriser les accès à Internet et les interconnexions des réseaux
 
-## Le modèle TCP/IP vs Le modèle OSI
-![image](https://github.com/Mirhazka/TSSR/blob/dde4df851017de6a5a842c4858e33c5d897eb56c/Ressources/tcpip-comparatif.webp)
+## 📡 Principe des réseaux
+Les réseaux informatiques sont un ensemble d'équipements interconnectés permettant d'échanger des informations. Leur but est de permettre la communication entre différents systèmes (ordinateurs, serveurs, périphériques) au sein d'une organisation ou à travers Internet.
 
-### Couche 1 : Physique
-- Encodage du signal, câblage et connecteurs, spécifications physiques.
-- Câbles, Hub, ...
+**Utilité** : Faciliter le partage de données et de ressources entre les utilisateurs et les systèmes informatiques.
 
-### Couche 2 : Liaison
-- Adresse localement les interfaces, livre les informations localement, méthode MAC
-- Switch, Carte réseau, ...
+**Exemples** :
+- Réseau local (LAN)
+- Réseau étendu (WAN)
+- Internet
 
-### Couche 3 : Réseau
-- Adresse les interfaces globalement et détermine les meilleurs chemins à travers un inter-réseau
-- Routeur, Pare-feu, ...
+### Modèle OSI et modèle TCP/IP
 
-### Couche 4 : Transport
-- Établit, maintient et termine des sessions entre des périphériques terminaux
-- Load balancer, Firewall avec inspection de paquet
+#### Modèle OSI (Open Systems Interconnection)
+Le modèle OSI est un cadre conceptuel divisé en 7 couches qui permet d'expliquer comment les données circulent dans un réseau.
 
-### Couche 5 : Application
-- Établit des sessions entre des applications; Encode, chiffre et compresse les données utiles; Services applicatifs au plus proche des utilisateurs
-- Serveur RDP, Proxy applicatif; Chiffrement SSL/TLS, Convertisseur de format (encodeur/décodeurs); Serveur Web (Apache, Nginx), Client FTP (FileZilla)
+**Utilité** : Standardisation des protocoles réseau pour assurer l’interopérabilité entre différents systèmes.
 
----
+**Exemples de couches** :
+1. Couche physique (câbles, interfaces réseau)
+2. Couche liaison de données (Ethernet, PPP)
+3. Couche réseau (IP)
+4. Couche transport (TCP, UDP)
+5. Couche session (gestion des sessions)
+6. Couche présentation (encodage, compression)
+7. Couche application (HTTP, FTP, DNS)
 
-## Cybersécurité
-### Vulnérabilité & Menace
-L'analyse de risques évalue les vulnérabilités du système, les menaces potentielles et les attaques qui peuvent exploiter ces faiblesses pour causer des dommages.
+#### Modèle TCP/IP
+Le modèle TCP/IP est plus simple et plus utilisé dans la pratique. Il se divise en 4 couches :  
+- Couche réseau
+- Couche Internet (IP)
+- Couche transport (TCP, UDP)
+- Couche application
 
-#### Principales actions de cybersécurité :
-- **Prévenir** : éviter les vulnérabilités
-- **Détecter** : savoir si et quand une attaque a lieu
-- **Réagir** : décider de la réponse appropriée à l'attaque
-- **Réparer** : remettre le SI en état opérationnel
+**Utilité** : Définir les protocoles utilisés pour la communication réseau dans un environnement Internet.
 
-#### Types de menaces :
-- Attaques par déni de service : DDoS
-- Ransomware
-- Attaques virales
-- Phishing
-
----
-
-## Filtrage réseau
-### Définition
-Un pare-feu est un dispositif de sécurité réseau qui filtre et contrôle le trafic entre des réseaux de différents niveaux de confiance, en s'appuyant sur les protocoles de transport (TCP, UDP) et des règles de routage.
-
-#### Principes de filtrage :
-- Liste de blocage
-- Liste d'autorisation suivie d'un *deny all*
-
-### DMZ
-Les machines clientes ont un accès restreint, tandis que les serveurs accessibles depuis l'extérieur sont placés en **DMZ**, une zone contrôlée avec un filtrage spécifique pour limiter les risques d'intrusion.
+**Exemples** :
+- HTTP, FTP, DNS (Application)
+- TCP, UDP (Transport)
+- IP (Internet)
 
 ---
 
-## VPN
-### Types de VPN
-- **Site-à-site**
-- **Host-to-network**
-- **Host-to-host**
+## 🔐 Introduction à la cybersécurité
 
-### Solutions de VPN
-- **IPsec**
-- **OpenVPN**
+La cybersécurité désigne l’ensemble des pratiques, technologies et processus qui protègent les systèmes informatiques et les réseaux contre les menaces telles que les attaques, les intrusions et les vols de données.
 
-⚠️ **Attention** : La mise en place de VPN ouvre une brèche entre des réseaux.
+**Utilité** : Assurer la confidentialité, l’intégrité et la disponibilité des informations et des systèmes.
 
----
-
-## Journalisation
-### GNU / Linux
-- **Syslog** (date, hôte, service, ID, priorité, message)
-  - 24 catégories de messages (0 à 23)
-  - Stocké dans `/var/log/`
-    - `/var/log/auth.log`
-    - `/var/log/kern.log`
-- **Systemd**
-  - Format binaire dans `/run/systemd/journal`
-  - Outil : `journalctl`
-  - Peut transmettre à syslog
-
-#### Outils d'analyse des logs :
-- Logwatch
-- Graylog
-- Loganalyzer
-
-### Windows
-- **Observateur d'événements** (`event viewer`)
-  - Informations système
-  - Enregistrements d'erreurs
-- Fichiers de logs : `C:\Windows\System32\winevt\Logs`
-
-#### Niveaux de criticité :
-- High
-- Medium
-- Low
-
-#### Event ID intéressants :
-- `4624` : Logon normal avec succès
-- `4625` : Logon avec erreur
-- `4740` : Compte verrouillé
-- `4728` : Ajout d’un utilisateur à un groupe global
-- `4732` : Ajout d’un utilisateur à un groupe local
-- `4756` : Ajout d’un utilisateur à un groupe universel
-- `4663` : Tentative d’accès à des objets
-- `1102` : Suppression des journaux
+**Exemples** :
+- Protection contre les malwares (virus, ransomwares)
+- Authentification forte (2FA)
+- Sécurisation des communications via chiffrement (SSL/TLS)
 
 ---
 
-## Supervision
-La **supervision** permet d'**observer à distance ce qui se passe sur un réseau**. Elle est essentielle pour :
-- **Détection** : pannes, incidents
-- **Modifications** : configuration, documentation
-- **Disponibilité** : consommation de ressources
-- **Amélioration des performances** : statistiques
-- **Prévention** : activités suspectes
+## 🔥Firewalls
 
-L'**hypervision** centralise les outils de supervision. Utilisation du protocole **SNMP** et de la base **MIB**.
+Un firewall (pare-feu) est un dispositif de sécurité qui contrôle les connexions entrantes et sortantes d'un réseau en fonction de règles de sécurité définies.
 
-#### Outils de supervision :
-- Solarwinds
-- PRTG
-- NextThink
-- Nagios
-- Zabbix
+**Utilité** : Protéger les réseaux internes contre les accès non autorisés et les attaques externes.
+
+**Exemples** :
+- Firewall matériel (pare-feu physique)
+- Firewall logiciel (pare-feu sur un serveur ou une machine)
+- Pare-feu intégré dans les routeurs domestiques
 
 ---
 
-## IDS & IPS
+## 🌐 VPN (Virtual Private Network)
 
-| IDS | IPS |
-|---|---|
-| Intrusion Detection System | Intrusion Prevention System |
-| Network IDS & Host IDS | Network IPS, Host-Based IPS, Kernel IPS |
-| Peut détecter et alerter, mais ne bloque pas | Peut détecter, alerter et interrompre une attaque |
-| Snort, Splunk | Snort, Fail2ban |
+Un VPN est un réseau privé virtuel permettant de sécuriser les communications sur un réseau public (comme Internet). Il crée un tunnel crypté entre l'utilisateur et le réseau privé.
+
+**Utilité** : Garantir la confidentialité et l'intégrité des données échangées en ligne.
+
+**Exemples** :
+- **IPsec** : Protocole de sécurité pour la transmission de données sur un réseau IP.
+- **OpenVPN** : Une solution VPN open-source, flexible et sécurisée.
 
 ---
 
-## Les ACL
+## 🔒 Sécuriser les systèmes
 
-### **Objectifs des ACL sur un routeur**
-✅ Bloquer les accès non autorisés (*ex. restreindre l’accès à Internet pour certains utilisateurs*).  
-✅ Sécuriser les interconnexions entre VLANs ou sous-réseaux.  
-✅ Filtrer le trafic selon IP, protocoles et ports.  
+Sécuriser un système informatique consiste à mettre en place des mesures techniques et organisationnelles pour protéger les données et les ressources contre les menaces.
 
-### **Types d’ACL**
-- **ACL standard** : filtre uniquement sur l’adresse IP source.
-- **ACL étendue** : filtre selon plusieurs critères (IP source/destination, protocole, ports, etc.).
+**Utilité** : Prévenir les attaques, les intrusions et les fuites de données.
 
-### **Exemples d’ACL pour sécuriser l'accès Internet**
+**Exemples** :
+- Utilisation de mots de passe forts
+- Mise à jour régulière des logiciels et systèmes
+- Désactivation des services inutiles
 
-#### **Autoriser HTTP/HTTPS, bloquer tout le reste**
-```bash
-access-list 101 permit tcp any any eq 80
-access-list 101 permit tcp any any eq 443
-access-list 101 deny ip any any
-```
+---
 
-#### **Bloquer un sous-réseau interne (192.168.1.0/24) d’accéder à Internet**
-```bash
-access-list 102 deny ip 192.168.1.0 0.0.0.255 any
-access-list 102 permit ip any any
-```
+## 📑 Journalisation sous Linux puis sous Windows
 
-#### **Autoriser un serveur (192.168.1.100) à accéder en SSH à un autre réseau (192.168.2.0/24)**
-```bash
-access-list 103 permit tcp host 192.168.1.100 192.168.2.0 0.0.0.255 eq 22
-access-list 103 deny ip any any
-```
+La journalisation consiste à enregistrer les événements survenus sur un système (logs) afin d’en assurer le suivi et la sécurité.
 
-### **Application des ACL sur une interface**
-```bash
-interface GigabitEthernet0/1
-  ip access-group 101 in
-```
-📌 **"in"** pour filtrer le trafic entrant, **"out"** pour le trafic sortant.  
+**Utilité** : Identifier rapidement les anomalies et assurer une traçabilité des actions.
 
-Les ACL sont essentielles pour la **sécurisation des réseaux** et doivent être configurées avec précaution. 🚀
+**Exemples** :
+- Sous **Linux** : `/var/log/syslog`, `/var/log/auth.log`
+- Sous **Windows** : Event Viewer, journaux d'événements
 
+---
+
+## 📊 Supervision sous Linux puis sous Windows
+
+La supervision permet de surveiller les performances et l'état des systèmes et réseaux pour anticiper les pannes.
+
+**Utilité** : Garantir la disponibilité des services et anticiper les incidents.
+
+**Exemples** :
+- Sous **Linux** : Outils comme `Nagios`, `Zabbix`, `Prometheus`
+- Sous **Windows** : System Center Operations Manager, Performance Monitor
+
+---
+
+## 🌐 Radius (Remote Authentication Dial-In User Service)
+
+RADIUS est un protocole d'authentification et d'autorisation pour gérer les accès à des réseaux.
+
+**Utilité** : Permet d’assurer un contrôle d’accès centralisé pour les utilisateurs.
+
+**Exemples** :
+- Utilisation dans les réseaux Wi-Fi pour authentifier les utilisateurs.
+- RADIUS avec un serveur VPN pour sécuriser les connexions à distance.
+
+---
+
+## 🛡️ IPS & IDS (Intrusion Prevention System & Intrusion Detection System)
+
+- **IDS** : Système qui détecte les intrusions dans un réseau en analysant le trafic.
+- **IPS** : Système qui détecte et empêche les intrusions en agissant activement.
+
+**Utilité** : Protéger contre les attaques en temps réel.
+
+**Exemples** :
+- IDS : Surveiller le trafic réseau et alerter en cas d'anomalie.
+- IPS : Bloquer des attaques comme les tentatives de déni de service (DoS).
+
+---
+
+## 🧠 Snort
+
+Snort est un logiciel open-source de détection d'intrusion et de prévention qui analyse le trafic réseau en temps réel.
+
+**Utilité** : Surveiller et prévenir les menaces de sécurité sur un réseau.
+
+**Exemples** :
+- Détecter des tentatives d’intrusion par signature de vulnérabilité.
+- Utilisé dans des systèmes IDS/IPS pour analyser le trafic réseau.
